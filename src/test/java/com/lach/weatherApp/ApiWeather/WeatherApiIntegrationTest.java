@@ -11,7 +11,7 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 
 
 @Tag("integration")
-public class WeatherApiintegrationTest {
+public class WeatherApiIntegrationTest {
 
     private static WeatherApi api;
 
@@ -40,6 +40,6 @@ public class WeatherApiintegrationTest {
             assertThat(result.getWeatherbitResponseDetail().get(1).getTemp()).isEqualTo(__TU_WPISAC__);
 
          */
-        assertThat(result.getWeatherbitResponseDetail().get(1).getTemp()).isEqualTo(1.7f);
+        assertThat(result.getWeatherbitResponseDetail().get(1).getTemp()).isEqualTo(2f);
     }
 }
