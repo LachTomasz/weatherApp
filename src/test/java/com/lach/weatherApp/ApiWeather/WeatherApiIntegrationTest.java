@@ -2,6 +2,7 @@ package com.lach.weatherApp.ApiWeather;
 
 import com.lach.weatherApp.City;
 import com.lach.weatherApp.WeatherbitObject.WeatherbitResponse;
+import jakarta.json.bind.JsonbBuilder;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
@@ -18,7 +19,7 @@ public class WeatherApiIntegrationTest {
     @BeforeAll
     static void setUp(){
         //given
-        api = new WeatherApi();
+        api = new WeatherApi(new ConnectionFactory(), JsonbBuilder.create());
     }
 
     @Test
@@ -40,6 +41,6 @@ public class WeatherApiIntegrationTest {
             assertThat(result.getWeatherbitResponseDetail().get(1).getTemp()).isEqualTo(__TU_WPISAC__);
 
          */
-        assertThat(result.getWeatherbitResponseDetail().get(1).getTemp()).isEqualTo(2f);
+        assertThat(result.getWeatherbitResponseDetail().get(1).getTemp()).isEqualTo(1.1f);
     }
 }

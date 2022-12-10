@@ -12,40 +12,40 @@ public class HttpConnection implements Closeable {
     private final HttpURLConnection connection;
 
     public HttpConnection(String url) {
-        try{
+        try {
             connection = (HttpURLConnection) new URL(url).openConnection();
-        } catch (IOException e){
+        } catch (IOException e) {
             throw new ApiException(e);
         }
     }
 
-    String response(){
+    String response() {
         validateResponse();
         StringBuilder response = new StringBuilder();
-        try(BufferedReader responseReader = new BufferedReader(new InputStreamReader(connection.getInputStream()))){
+        try (BufferedReader responseReader = new BufferedReader(new InputStreamReader(connection.getInputStream()))) {
             String line;
-            while ((line = responseReader.readLine()) != null){
+            while ((line = responseReader.readLine()) != null) {
                 response.append(line);
             }
-        } catch (IOException e){
+        } catch (IOException e) {
             throw new ApiException(e);
         }
         return response.toString();
     }
 
     @Override
-    public void close(){
+    public void close() {
         connection.disconnect();
     }
 
-    void validateResponse(){
-        try{
+    void validateResponse() {
+        try {
             int responseCode = connection.getResponseCode();
-            if (responseCode != 200){
+            if (responseCode != 200) {
                 String responseMessage = connection.getResponseMessage();
                 throw new ApiException(String.format("Something went wrong! [%d] %s", responseCode, responseMessage));
             }
-        } catch (IOException e){
+        } catch (IOException e) {
             throw new ApiException(e);
         }
     }

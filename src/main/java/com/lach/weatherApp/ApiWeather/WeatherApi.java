@@ -4,8 +4,11 @@ import com.lach.weatherApp.City;
 import com.lach.weatherApp.WeatherbitObject.WeatherbitResponse;
 import jakarta.json.bind.Jsonb;
 import jakarta.json.bind.JsonbBuilder;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
 
+@Component
 public class WeatherApi {
 
     private static final String API_URL_TEMPLATE = "http://api.weatherbit.io/v2.0/forecast/daily?&city=";
@@ -14,10 +17,7 @@ public class WeatherApi {
     private final ConnectionFactory connectionFactory;
     private final Jsonb jsonb;
 
-    public WeatherApi() {
-        this(new ConnectionFactory(), JsonbBuilder.create());
-    }
-
+    @Autowired
     public WeatherApi(ConnectionFactory connectionFactory, Jsonb jsonb) {
         this.connectionFactory = connectionFactory;
         this.jsonb = jsonb;

@@ -28,7 +28,7 @@ public class WeatherbitResponseDetail {
     private Float highTemp;                                   //high_temp: High Temperature "Day-time High" - Calculated from 7 AM to 7 PM local time (default Celsius)
     @JsonbProperty("low_temp")
     private Float lowTemp;                                    //low_temp: Low Temperature "Night-time Low" - Calculated from 7 PM to 7 AM local (default Celsius)
-//    @JsonbProperty("max_dhi")
+    //    @JsonbProperty("max_dhi")
     @JsonbTransient
     private String maxDhi;                                    //max_dhi: [DEPRECATED] Maximum direct component of solar radiation (W/m^2)
     @JsonbProperty("max_temp")

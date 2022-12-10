@@ -4,7 +4,6 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.json.bind.annotation.JsonbProperty;
 
-
 import java.util.Objects;
 
 public class WeatherbitResponseIconDescription {
