@@ -3,7 +3,9 @@ package com.lach.weatherApp;
 import com.lach.weatherApp.WeatherbitObject.WeatherbitResponse;
 import org.springframework.stereotype.Repository;
 
+import java.util.List;
 import java.util.Map;
+import java.util.stream.Collectors;
 
 @Repository
 public class WeatherRepository {
@@ -26,6 +28,10 @@ public class WeatherRepository {
 
     public WeatherbitResponse find(City city) {
         return idToWeather.get(city);
+    }
+
+    public List<WeatherbitResponse> findAll(){
+        return idToWeather.values().stream().collect(Collectors.toList());
     }
 
     public void delete(City city) {

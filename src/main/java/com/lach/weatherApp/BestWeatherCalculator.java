@@ -8,7 +8,12 @@ import java.util.List;
 @Component
 public class BestWeatherCalculator {
 
-    public BestWeatherResponse calculate(List<WeatherbitResponse> weatherbitResponseList, Long date){
+
+    public BestWeatherResponse calculate(List<WeatherbitResponse> weatherbitResponseList, long date){
+
+//var result = weatherbitResponseList.stream()
+//        .filter(wind -> weatherbitResponseList.forEach(weatherbitResponse -> weatherbitResponse.getWeatherbitResponseDetail().get(Math.toIntExact(date))))
+//        .;
         return null;
 
     }

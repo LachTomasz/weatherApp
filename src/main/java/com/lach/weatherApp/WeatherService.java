@@ -23,7 +23,6 @@ public class WeatherService {
         this.bestWeatherCalculator = bestWeatherCalculator;
     }
 
-    //todo test do tej metody
     public BestWeatherResponse bestWeather(Long day) {
 
         List<WeatherbitResponse> weatherList = Arrays.stream(City.values())
@@ -31,7 +30,7 @@ public class WeatherService {
                 .collect(Collectors.toList());
         return bestWeatherCalculator.calculate(weatherList, day);
     }
-//todo unit test metoda robi zapytanie do weatherbitSerwice mockiem
+//todo unit test metoda robi zapytanie do weatherbitSerwice mockiem. Done
     //todo wyciagnac do properity file stałe z url i key
 
 

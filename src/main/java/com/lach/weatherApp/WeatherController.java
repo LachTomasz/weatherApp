@@ -19,13 +19,12 @@ public class WeatherController {
         this.weatherService = weatherService;
     }
 
-    @GetMapping("/bestWeather/{yyyy-mm-dd}")
-    public BestWeatherResponse getbestWeather(@PathVariable("yyyy-mm-dd") String id) {///pathVariable zmien nazwe z formatu na date
-        LocalDate date = LocalDate.parse(id);
+    @GetMapping("/bestWeather/{date}")
+    public BestWeatherResponse getBestWeather(@PathVariable("date") String tdata) {///pathVariable zmien nazwe z formatu na date
+        LocalDate date = LocalDate.parse(tdata);
         LocalDate startDate = LocalDate.now();
         Long range = ChronoUnit.DAYS.between(date, startDate);
-        if (range < 16l) {
-
+        if ((0L < range) & (range < 16L)) {
 
         }
         return null;

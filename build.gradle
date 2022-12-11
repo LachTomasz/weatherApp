@@ -16,6 +16,8 @@ dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter-web'
 	implementation 'jakarta.json:jakarta.json-api:2.1.1'
 	implementation 'jakarta.json.bind:jakarta.json.bind-api:3.0.0'
+	implementation 'junit:junit:4.13.1'
+	implementation 'org.springframework:spring-tx:5.3.24'
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
 	testImplementation 'org.eclipse:yasson:3.0.2'
 }

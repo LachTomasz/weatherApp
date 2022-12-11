@@ -8,7 +8,6 @@ import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.junit.jupiter.api.Assertions.assertThrows;
 
 
 @Tag("integration")
@@ -17,13 +16,13 @@ public class WeatherApiIntegrationTest {
     private static WeatherApi api;
 
     @BeforeAll
-    static void setUp(){
+    static void setUp() {
         //given
         api = new WeatherApi(new ConnectionFactory(), JsonbBuilder.create());
     }
 
     @Test
-    void shouldRequesttURLWhenFetchingTempForJastarnia(){
+    void shouldRequesttURLWhenFetchingTempForJastarnia() {
         //when
         WeatherbitResponse result = api.weatherbitResponse(City.Jastarnia);
 
@@ -41,6 +40,6 @@ public class WeatherApiIntegrationTest {
             assertThat(result.getWeatherbitResponseDetail().get(1).getTemp()).isEqualTo(__TU_WPISAC__);
 
          */
-        assertThat(result.getWeatherbitResponseDetail().get(1).getTemp()).isEqualTo(1.1f);
+        assertThat(result.getWeatherbitResponseDetail().get(1).getTemp()).isEqualTo(1.6f);
     }
 }
