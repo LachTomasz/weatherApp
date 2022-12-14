@@ -1,6 +1,7 @@
 package com.lach.weatherApp;
 
 import com.lach.weatherApp.ApiWeather.WeatherApi;
+import com.lach.weatherApp.ApiWeather.WeatherClient;
 import com.lach.weatherApp.WeatherbitObject.WeatherbitResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -13,11 +14,11 @@ import java.util.stream.Collectors;
 public class WeatherService {
 
     private final WeatherRepository weatherRepository;
-    private final WeatherApi weatherApi;
+    private final WeatherClient weatherApi;
     private final BestWeatherCalculator bestWeatherCalculator;
 
     @Autowired
-    public WeatherService(WeatherRepository weatherRepository, WeatherApi weatherApi, BestWeatherCalculator bestWeatherCalculator) {
+    public WeatherService(WeatherRepository weatherRepository, WeatherClient weatherApi, BestWeatherCalculator bestWeatherCalculator) {
         this.weatherRepository = weatherRepository;
         this.weatherApi = weatherApi;
         this.bestWeatherCalculator = bestWeatherCalculator;

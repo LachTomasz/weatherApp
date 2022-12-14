@@ -25,9 +25,9 @@ public class WeatherController {
         LocalDate startDate = LocalDate.now();
         Long range = ChronoUnit.DAYS.between(date, startDate);
         if ((0L < range) & (range < 16L)) {
-
+//wyjatek
         }
-        return null;
+        return weatherService.bestWeather(2l);
     }
 //todo napisać test do tego na poczatek tylko status 200 testowac. dodaj test dla badrequesta - data musi byc w przedziale anie poza nim. data poza przedzialem status 400
 

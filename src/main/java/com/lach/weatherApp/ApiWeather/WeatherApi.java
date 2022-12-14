@@ -11,15 +11,10 @@ import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 @EnableTransactionManagement
-@PropertySource("classpath:application.properties")
-@Component
-public class WeatherApi {
+public class WeatherApi implements WeatherClient{
 
     @Autowired
     private Environment env;
-
-    private static final String API_URL_TEMPLATE = "http://api.weatherbit.io/v2.0/forecast/daily?&city=";
-    private static final String API_KEY = "3a592d44641446cd87518392b3497ebb";
 
     private final ConnectionFactory connectionFactory;
     private final Jsonb jsonb;
@@ -30,9 +25,9 @@ public class WeatherApi {
         this.jsonb = jsonb;
     }
 
-    public WeatherbitResponse weatherbitResponse(City city) {
-//        String requestUrl = env.getProperty("api.url") + city.name() + "&key=" + env.getProperty("api.key");
-        String requestUrl = API_URL_TEMPLATE + city.name() + "&key=" + API_KEY;
+    @Override
+    public WeatherbitResponse weatherbitResponse(City city){
+        String requestUrl = env.getProperty("api.url") + city.name() + "&key=" + env.getProperty("api.key");
         WeatherbitResponse weatherbitResponse;
         try (HttpConnection connection = connectionFactory.build(requestUrl)) {
             String response = connection.response();

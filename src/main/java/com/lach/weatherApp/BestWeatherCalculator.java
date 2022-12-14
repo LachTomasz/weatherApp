@@ -14,6 +14,8 @@ public class BestWeatherCalculator {
 //var result = weatherbitResponseList.stream()
 //        .filter(wind -> weatherbitResponseList.forEach(weatherbitResponse -> weatherbitResponse.getWeatherbitResponseDetail().get(Math.toIntExact(date))))
 //        .;
+        //todo zwracac dowolny element z mapy  i zapisac oraz zwrocic zmiast tego null podspodem
+        //todo long zamien na localdate w calej aplikacji
         return null;
 
     }
