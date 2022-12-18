@@ -5,6 +5,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.time.Duration;
 import java.time.LocalDate;
 import java.time.temporal.ChronoUnit;
 
@@ -20,14 +21,12 @@ public class WeatherController {
     }
 
     @GetMapping("/bestWeather/{date}")
-    public BestWeatherResponse getBestWeather(@PathVariable("date") String tdata) {///pathVariable zmien nazwe z formatu na date
-        LocalDate date = LocalDate.parse(tdata);
-        LocalDate startDate = LocalDate.now();
-        Long range = ChronoUnit.DAYS.between(date, startDate);
-        if ((0L < range) & (range < 16L)) {
-//wyjatek
-        }
-        return weatherService.bestWeather(2l);
+    public BestWeatherResponse getBestWeather(@PathVariable("date") String sDate) {
+        LocalDate date = LocalDate.parse(sDate);
+        LocalDate today = LocalDate.now();
+        Duration difference = Duration.between(today, date);
+        if (date.isAfter(today) & difference.toDays() < 16L) return weatherService.bestWeather(date);
+        else return null;
     }
 //todo napisać test do tego na poczatek tylko status 200 testowac. dodaj test dla badrequesta - data musi byc w przedziale anie poza nim. data poza przedzialem status 400
 

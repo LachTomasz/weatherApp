@@ -5,6 +5,7 @@ import com.lach.weatherApp.WeatherbitObject.WeatherbitResponse;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
 
+import java.time.LocalDate;
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -35,13 +36,13 @@ class WeatherServiceTest {
         when(weatherApi.weatherbitResponse(City.Pissouri)).thenReturn(weatherbitResponsePissouri);
         WeatherbitResponse weatherbitResponseLe_Morne = new WeatherbitResponse("Le_Morne", List.of());
         when(weatherApi.weatherbitResponse(City.Le_Morne)).thenReturn(weatherbitResponseLe_Morne);
-        //todo dopisac dla pozostałych miast
+        //todo dopisac dla pozostałych miast. Done
 
         BestWeatherResponse bestWeatherResponse = new BestWeatherResponse();
-        when(weatherService.bestWeather(2l)).thenReturn(bestWeatherResponse);
+        when(weatherService.bestWeather(LocalDate.parse("2022-12-18"))).thenReturn(bestWeatherResponse);
 
         //When
-        BestWeatherResponse result = weatherService.bestWeather(2l);
+        BestWeatherResponse result = weatherService.bestWeather(LocalDate.parse("2022-12-18"));
 
         //Then
         assertThat(result).isEqualTo(bestWeatherResponse);

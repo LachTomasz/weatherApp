@@ -6,6 +6,7 @@ import com.lach.weatherApp.WeatherbitObject.WeatherbitResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDate;
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -24,15 +25,13 @@ public class WeatherService {
         this.bestWeatherCalculator = bestWeatherCalculator;
     }
 
-    public BestWeatherResponse bestWeather(Long day) {
+    public BestWeatherResponse bestWeather(LocalDate date) {
 
         List<WeatherbitResponse> weatherList = Arrays.stream(City.values())
                 .map(city -> weatherApi.weatherbitResponse(city))
                 .collect(Collectors.toList());
-        return bestWeatherCalculator.calculate(weatherList, day);
+        return bestWeatherCalculator.calculate(weatherList, date);
     }
-//todo unit test metoda robi zapytanie do weatherbitSerwice mockiem. Done
-    //todo wyciagnac do properity file stałe z url i key
 
 
 }

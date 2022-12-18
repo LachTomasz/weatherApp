@@ -23,7 +23,7 @@ class WeatherControllerTest {
     @Test
     void shouldGetBestWeatherStatus200() {
         //Given
-        String url = "http://localhost:" + port + "/bestWeather/2022-12-13";
+        String url = "http://localhost:" + port + "/bestWeather/2022-12-25";
 
         //When
         ResponseEntity<BestWeatherResponse> result = restTemplate.getForEntity(url, BestWeatherResponse.class);
@@ -36,7 +36,7 @@ class WeatherControllerTest {
     @Test
     void shouldGetBestWeatherStatus400(){
         //Given
-        String url = "http://localhost:" + port + "/bestWeather/2022-12-31";
+        String url = "http://localhost:" + port + "/bestWeather/2022-12-25";
 
         //When
         ResponseEntity<BestWeatherResponse> result = restTemplate.getForEntity(url, BestWeatherResponse.class);
