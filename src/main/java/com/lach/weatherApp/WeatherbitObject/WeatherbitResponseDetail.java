@@ -5,11 +5,12 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.json.bind.annotation.JsonbProperty;
 import jakarta.json.bind.annotation.JsonbTransient;
 
+import java.time.LocalDate;
 import java.util.Objects;
 
 public class WeatherbitResponseDetail {
     @JsonbProperty("datetime")
-    private String datetime;                                  //datetime:[DEPRECATED] Forecast valid date (YYYY-MM-DD)
+    private LocalDate datetime;                                  //datetime:[DEPRECATED] Forecast valid date (YYYY-MM-DD)
    @JsonbProperty("temp")
     private Float temp;                                       //temp: Average Temperature (default Celsius)
    @JsonbProperty("wind_spd")
@@ -19,18 +20,18 @@ public class WeatherbitResponseDetail {
     }
 
     @JsonCreator
-    public WeatherbitResponseDetail(@JsonProperty(value = "datetime") String datetime, @JsonProperty(value = "temp") Float temp,
+    public WeatherbitResponseDetail(@JsonProperty(value = "datetime") LocalDate datetime, @JsonProperty(value = "temp") Float temp,
                                     @JsonProperty(value = "wind_spd") Float windSpd) {
         this.datetime = datetime;
         this.temp = temp;
         this.windSpd = windSpd;
     }
 
-    public String getDatetime() {
+    public LocalDate getDatetime() {
         return datetime;
     }
 
-    public void setDatetime(String datetime) {
+    public void setDatetime(LocalDate datetime) {
         this.datetime = datetime;
     }
 

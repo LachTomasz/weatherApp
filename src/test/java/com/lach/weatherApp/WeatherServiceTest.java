@@ -37,7 +37,7 @@ class WeatherServiceTest {
         when(weatherApi.weatherbitResponse(City.Le_Morne)).thenReturn(weatherbitResponseLe_Morne);
         //todo dopisac dla pozostałych miast. Done
 
-        BestWeatherResponse bestWeatherResponse = new BestWeatherResponse(City.Jastarnia, 6F);
+        BestWeatherResponse bestWeatherResponse = new BestWeatherResponse(City.Jastarnia, 6F, 20F);
         when(weatherService.bestWeather(LocalDate.parse("2022-12-18"))).thenReturn(bestWeatherResponse);
 
         //When

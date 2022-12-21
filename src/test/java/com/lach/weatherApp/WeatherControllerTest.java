@@ -36,10 +36,10 @@ class WeatherControllerTest {
     @Test
     void shouldGetBestWeatherStatus400(){
         //Given
-        String url = "http://localhost:" + port + "/bestWeather/2022-12-25";
+        String url = "http://localhost:" + port + "/bestWeather/2022-11-19";
 
         //When
-        ResponseEntity<BestWeatherResponse> result = restTemplate.getForEntity(url, BestWeatherResponse.class);
+        ResponseEntity<BestWeatherResponse> result = restTemplate.getForEntity(url, BestWeatherResponse.class);//w debugowaniu podmien se na stringa clase
 
         //Then
         assertThat(result.getStatusCode().is4xxClientError()).isTrue();
