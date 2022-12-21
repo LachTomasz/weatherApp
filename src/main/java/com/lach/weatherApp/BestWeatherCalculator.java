@@ -5,6 +5,7 @@ import org.springframework.stereotype.Component;
 
 import java.time.Duration;
 import java.time.LocalDate;
+import java.time.temporal.ChronoUnit;
 import java.util.List;
 
 @Component
@@ -19,12 +20,9 @@ public class BestWeatherCalculator {
         //todo zwracac dowolny element z mapy  i zapisac oraz zwrocic zmiast tego null podspodem. Done
         //todo long zamien na localdate w calej aplikacji. Done
 //        return null;
-        LocalDate today = LocalDate.now();
-        Duration difference = Duration.between(today, date);
-        Integer day = (int)difference.toDays();
-
-        City city = City.valueOf(weatherbitResponseList.get(day).getCityName());
-        Float wind = weatherbitResponseList.get(day).getWeatherbitResponseDetail().get(2).getWindSpd();
-return new BestWeatherResponse(city, wind);
+        City city = City.valueOf(weatherbitResponseList.get(0).getCityName());
+        Float wind = weatherbitResponseList.get(0).getWeatherbitResponseDetail().get(2).getWindSpd();
+        BestWeatherResponse bestWeather =  new BestWeatherResponse(city, wind);
+        return bestWeather;
     }
 }

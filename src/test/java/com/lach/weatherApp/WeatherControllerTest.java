@@ -42,7 +42,7 @@ class WeatherControllerTest {
         ResponseEntity<BestWeatherResponse> result = restTemplate.getForEntity(url, BestWeatherResponse.class);
 
         //Then
-        assertThat(result.getStatusCode().is2xxSuccessful()).isTrue();
+        assertThat(result.getStatusCode().is4xxClientError()).isTrue();
 
     }
 }

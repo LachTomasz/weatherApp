@@ -24,8 +24,8 @@ public class WeatherController {
     public BestWeatherResponse getBestWeather(@PathVariable("date") String sDate) {
         LocalDate date = LocalDate.parse(sDate);
         LocalDate today = LocalDate.now();
-        Duration difference = Duration.between(today, date);
-        if (date.isAfter(today) & difference.toDays() < 16L) return weatherService.bestWeather(date);
+        Long difference = ChronoUnit.DAYS.between(today, date);
+        if (date.isAfter(today) & difference < 16L) return weatherService.bestWeather(date);
         else return null;
     }
 //todo napisać test do tego na poczatek tylko status 200 testowac. dodaj test dla badrequesta - data musi byc w przedziale anie poza nim. data poza przedzialem status 400
