@@ -23,7 +23,7 @@ class WeatherControllerTest {
     @Test
     void shouldGetBestWeatherStatus200() {
         //Given
-        String url = "http://localhost:" + port + "/bestWeather/2022-12-25";
+        String url = "http://localhost:" + port + "/bestWeather/2023-01-04";
 
         //When
         ResponseEntity<BestWeatherResponse> result = restTemplate.getForEntity(url, BestWeatherResponse.class);
@@ -31,12 +31,15 @@ class WeatherControllerTest {
         //Then
         assertThat(result.getStatusCode().is2xxSuccessful()).isTrue();
         //todo poza statusem skontrolowac odpowiedzi
+        assertThat(result.getBody().temp).isNotZero();
+        assertThat(result.getBody().wind).isNotZero();
+        assertThat(result.getBody().city).isExactlyInstanceOf(City.class);
     }
 
     @Test
     void shouldGetBestWeatherStatus400(){
         //Given
-        String url = "http://localhost:" + port + "/bestWeather/2022-11-19";
+        String url = "http://localhost:" + port + "/bestWeather/2022-12-25";
 
         //When
         ResponseEntity<BestWeatherResponse> result = restTemplate.getForEntity(url, BestWeatherResponse.class);//w debugowaniu podmien se na stringa clase

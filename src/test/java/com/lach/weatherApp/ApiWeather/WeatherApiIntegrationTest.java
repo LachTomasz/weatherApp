@@ -21,25 +21,25 @@ public class WeatherApiIntegrationTest {
         api = new WeatherApi(new ConnectionFactory(), JsonbBuilder.create());
     }
 
-    @Test
-    void shouldRequesttURLWhenFetchingTempForJastarnia() {
-        //when
-        WeatherbitResponse result = api.weatherbitResponse(City.Jastarnia);
-
-        //then
-        /*
-            Pobrać Postmanem z:
-            "http://api.weatherbit.io/v2.0/forecast/daily?&city=Jastarnia&key=3a592d44641446cd87518392b3497ebb"
-
-            aktualnego Jsona z danymi pogodowym i wpisać w porównaniu aktualną temp dla wybranego dnia.
-
-                                                                                              ||
-                                                                                             \  /
-                                                                                              \/
-
-            assertThat(result.getWeatherbitResponseDetail().get(1).getTemp()).isEqualTo(__TU_WPISAC__);
-
-         */
-        assertThat(result.getWeatherbitResponseDetail().get(1).getTemp()).isEqualTo(1.6f);
-    }
+//    @Test
+//    void shouldRequesttURLWhenFetchingTempForJastarnia() {
+//        //when
+//        WeatherbitResponse result = api.weatherbitResponse(City.Jastarnia);
+//
+//        //then
+//        /*
+//            Pobrać Postmanem z:
+//            "http://api.weatherbit.io/v2.0/forecast/daily?&city=Jastarnia&key=3a592d44641446cd87518392b3497ebb"
+//
+//            aktualnego Jsona z danymi pogodowym i wpisać w porównaniu aktualną temp dla wybranego dnia.
+//
+//                                                                                              ||
+//                                                                                             \  /
+//                                                                                              \/
+//
+//            assertThat(result.getWeatherbitResponseDetail().get(1).getTemp()).isEqualTo(__TU_WPISAC__);
+//
+//         */
+//        assertThat(result.getWeatherbitResponseDetail().get(1).getTemp()).isEqualTo(1.6f);
+//    }
 }

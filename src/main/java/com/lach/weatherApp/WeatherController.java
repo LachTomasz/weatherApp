@@ -1,13 +1,11 @@
 package com.lach.weatherApp;
 
+import com.lach.weatherApp.apiErrorHandling.MissingHeaderInfoException;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
 
-import java.awt.*;
-import java.time.Duration;
 import java.time.LocalDate;
 import java.time.temporal.ChronoUnit;
 
@@ -27,8 +25,8 @@ public class WeatherController {
         LocalDate date = LocalDate.parse(sDate);
         LocalDate today = LocalDate.now();
         Long difference = ChronoUnit.DAYS.between(today, date);
-        if (date.isAfter(today) & difference < 16L) return weatherService.bestWeather(date);
-        else return null;//tu stworzyc wlasny wyajatek i mapuj
+        if (date.isBefore(today) || difference > 16L) throw new MissingHeaderInfoException("Date not allowed");
+        return weatherService.bestWeather(date);
     }
 //todo napisać test do tego na poczatek tylko status 200 testowac. dodaj test dla badrequesta - data musi byc w przedziale anie poza nim. data poza przedzialem status 400
 
