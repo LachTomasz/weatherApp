@@ -17,9 +17,9 @@ public class CustomExceptionHandler extends ResponseEntityExceptionHandler
     private final String BAD_REQUEST = "BAD_REQUEST";
     private final String METHOD_NOT_ALLOWED = "METHOD_NOT_ALLOWED";
 
-    @ExceptionHandler(RecordNotFoundException.class)
+    @ExceptionHandler(NotFoundException.class)
     public final ResponseEntity<ErrorResponse> handleUserNotFoundException
-            (RecordNotFoundException ex, WebRequest request)
+            (NotFoundException ex, WebRequest request)
     {
         List<String> details = new ArrayList<>();
         details.add(ex.getLocalizedMessage());
@@ -27,9 +27,9 @@ public class CustomExceptionHandler extends ResponseEntityExceptionHandler
         return new ResponseEntity<>(error, HttpStatus.NOT_FOUND);
     }
 
-    @ExceptionHandler(MissingHeaderInfoException.class)
+    @ExceptionHandler(BadRequestException.class)
     public final ResponseEntity<ErrorResponse> handleInvalidTraceIdException
-            (MissingHeaderInfoException ex, WebRequest request)
+            (BadRequestException ex, WebRequest request)
     {
         List<String> details = new ArrayList<>();
         details.add(ex.getLocalizedMessage());

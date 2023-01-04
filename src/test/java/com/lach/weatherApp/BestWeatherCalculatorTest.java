@@ -6,8 +6,9 @@ import org.junit.jupiter.api.Test;
 
 import java.time.LocalDate;
 import java.util.List;
+import java.util.Optional;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.assertj.core.api.Assertions.assertThat;
 
 class BestWeatherCalculatorTest {
 
@@ -44,10 +45,14 @@ class BestWeatherCalculatorTest {
                 ))
                         );
         //when
-        var result = bestWeatherCalculator.calculate(weatherbitResponseList, LocalDate.parse("2022-12-19"));
+        Optional<BestWeatherResponse> optionalResult = bestWeatherCalculator.calculate(weatherbitResponseList, LocalDate.parse("2022-12-19"));
 
         //then
-        //todo dokoncz!!!
+        BestWeatherResponse result = optionalResult.orElseThrow();
+        assertThat(result.city).isEqualTo(City.Bridgetown);
+        assertThat(result.wind).isEqualTo(6.0F);
+        assertThat(result.temp).isEqualTo(26.4F);
     }
-
+//todo test na nieznalezione miasto, przeciwienstwo testu powyzej
+    //todo test na dwa miasta spelniajace kryterium pogodowe
 }

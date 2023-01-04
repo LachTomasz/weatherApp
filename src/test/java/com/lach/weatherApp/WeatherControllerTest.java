@@ -30,7 +30,7 @@ class WeatherControllerTest {
 
         //Then
         assertThat(result.getStatusCode().is2xxSuccessful()).isTrue();
-        //todo poza statusem skontrolowac odpowiedzi
+        //todo poza statusem skontrolowac odpowiedzi, dopisac odpowiednie assercje
         assertThat(result.getBody().temp).isNotZero();
         assertThat(result.getBody().wind).isNotZero();
         assertThat(result.getBody().city).isExactlyInstanceOf(City.class);
@@ -48,4 +48,6 @@ class WeatherControllerTest {
         assertThat(result.getStatusCode().is4xxClientError()).isTrue();
 
     }
+
+    //todo test na zadne pasujace miasto -> w stubie w wybranym dniu dopasowac dane tak aby osiagnac pozytywny wynik tego testu
 }

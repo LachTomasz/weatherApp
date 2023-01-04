@@ -1,6 +1,5 @@
 package com.lach.weatherApp;
 
-import com.lach.weatherApp.ApiWeather.WeatherApi;
 import com.lach.weatherApp.ApiWeather.WeatherClient;
 import com.lach.weatherApp.WeatherbitObject.WeatherbitResponse;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,6 +8,7 @@ import org.springframework.stereotype.Service;
 import java.time.LocalDate;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Service
@@ -25,7 +25,7 @@ public class WeatherService {
         this.bestWeatherCalculator = bestWeatherCalculator;
     }
 
-    public BestWeatherResponse bestWeather(LocalDate date) {
+    public Optional<BestWeatherResponse> bestWeather(LocalDate date) {
 
         List<WeatherbitResponse> weatherList = Arrays.stream(City.values())
                 .map(city -> weatherApi.weatherbitResponse(city))

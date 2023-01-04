@@ -7,6 +7,7 @@ import org.mockito.Mockito;
 
 import java.time.LocalDate;
 import java.util.List;
+import java.util.Optional;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.mockito.Mockito.when;
@@ -36,11 +37,11 @@ class WeatherServiceTest {
         WeatherbitResponse weatherbitResponseLe_Morne = new WeatherbitResponse("Le_Morne", List.of());
         when(weatherApi.weatherbitResponse(City.Le_Morne)).thenReturn(weatherbitResponseLe_Morne);
 
-        BestWeatherResponse bestWeatherResponse = new BestWeatherResponse(City.Jastarnia, 6F, 20F);
+        Optional<BestWeatherResponse> bestWeatherResponse = Optional.of(new BestWeatherResponse(City.Jastarnia, 6F, 20F));
         when(weatherService.bestWeather(LocalDate.parse("2022-12-18"))).thenReturn(bestWeatherResponse);
 
         //When
-        BestWeatherResponse result = weatherService.bestWeather(LocalDate.parse("2022-12-18"));
+        Optional<BestWeatherResponse> result = weatherService.bestWeather(LocalDate.parse("2022-12-18"));
 
         //Then
         assertThat(result).isEqualTo(bestWeatherResponse);
