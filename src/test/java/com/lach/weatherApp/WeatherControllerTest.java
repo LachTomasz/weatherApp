@@ -6,12 +6,13 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.web.client.TestRestTemplate;
 import org.springframework.boot.test.web.server.LocalServerPort;
 import org.springframework.http.ResponseEntity;
-import org.springframework.test.context.ActiveProfiles;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-@SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
-@ActiveProfiles(value = "test")
+//@SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
+//@ActiveProfiles(value = "test") //zapis poniżej jest równowarzny z liniami 16 i 17
+@SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT,
+        properties = "spring.profiles.active:test")
 class WeatherControllerTest {
 
     @LocalServerPort
@@ -23,7 +24,7 @@ class WeatherControllerTest {
     @Test
     void shouldGetBestWeatherStatus200() {
         //Given
-        String url = "http://localhost:" + port + "/bestWeather/2023-01-04";
+        String url = "http://localhost:" + port + "/bestWeather/2023-01-06";
 
         //When
         ResponseEntity<BestWeatherResponse> result = restTemplate.getForEntity(url, BestWeatherResponse.class);
@@ -31,13 +32,13 @@ class WeatherControllerTest {
         //Then
         assertThat(result.getStatusCode().is2xxSuccessful()).isTrue();
         //todo poza statusem skontrolowac odpowiedzi, dopisac odpowiednie assercje
-        assertThat(result.getBody().temp).isNotZero();
-        assertThat(result.getBody().wind).isNotZero();
-        assertThat(result.getBody().city).isExactlyInstanceOf(City.class);
+        assertThat(result.getBody().temp).isEqualTo(26.3F);
+        assertThat(result.getBody().wind).isEqualTo(5.9F);
+        assertThat(result.getBody().city).isEqualTo(City.Bridgetown);
     }
 
     @Test
-    void shouldGetBestWeatherStatus400(){
+    void shouldGetBestWeatherStatus400() {
         //Given
         String url = "http://localhost:" + port + "/bestWeather/2022-12-25";
 
@@ -50,4 +51,18 @@ class WeatherControllerTest {
     }
 
     //todo test na zadne pasujace miasto -> w stubie w wybranym dniu dopasowac dane tak aby osiagnac pozytywny wynik tego testu
+    @Test
+    void shouldDontGetBestWeatherStatus404() {
+        //Given
+        String url = "http://localhost:" + port + "/bestWeather/2023-01-16";
+
+        //When
+        ResponseEntity<BestWeatherResponse> result = restTemplate.getForEntity(url, BestWeatherResponse.class);
+
+        //Then
+        assertThat(result.getStatusCode().is4xxClientError()).isTrue();
+
+    }
+//58:50
+    //todo 1:02:00 o obejsciu daty wstecznej
 }

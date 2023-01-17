@@ -3,6 +3,8 @@ package com.lach.weatherApp.ApiWeather;
 import com.lach.weatherApp.City;
 import com.lach.weatherApp.WeatherbitObject.WeatherbitResponse;
 import com.lach.weatherApp.WeatherbitObject.WeatherbitResponseDetail;
+import org.springframework.context.annotation.Profile;
+import org.springframework.stereotype.Component;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -28,7 +30,7 @@ public class WeatherApiStub implements WeatherClient {
                     new WeatherbitResponseDetail(LocalDate.parse("2023-01-13"), 1.6F, 6.3F),
                     new WeatherbitResponseDetail(LocalDate.parse("2023-01-14"), 5.2F, 10.0F),
                     new WeatherbitResponseDetail(LocalDate.parse("2023-01-15"), 3.5F, 7.3F),
-                    new WeatherbitResponseDetail(LocalDate.parse("2023-01-16"), 4.2F, 8.0F)
+                    new WeatherbitResponseDetail(LocalDate.parse("2023-01-16"), 3.2F, 8.0F)
             )),
 
             City.Bridgetown, new WeatherbitResponse("Bridgetown", List.of(
@@ -47,7 +49,7 @@ public class WeatherApiStub implements WeatherClient {
                     new WeatherbitResponseDetail(LocalDate.parse("2023-01-13"), 25.8F, 8.4F),
                     new WeatherbitResponseDetail(LocalDate.parse("2023-01-14"), 25.6F, 8.6F),
                     new WeatherbitResponseDetail(LocalDate.parse("2023-01-15"), 26.0F, 8.5F),
-                    new WeatherbitResponseDetail(LocalDate.parse("2023-01-16"), 25.8F, 7.5F)
+                    new WeatherbitResponseDetail(LocalDate.parse("2023-01-16"), 36.8F, 7.5F)
             )),
             City.Fortaleza, new WeatherbitResponse("Fortaleza", List.of(
                     new WeatherbitResponseDetail(LocalDate.parse("2023-01-01"), 29.6F, 3.9F),
@@ -65,7 +67,7 @@ public class WeatherApiStub implements WeatherClient {
                     new WeatherbitResponseDetail(LocalDate.parse("2023-01-13"), 27.6F, 6.9F),
                     new WeatherbitResponseDetail(LocalDate.parse("2023-01-14"), 27.2F, 6.5F),
                     new WeatherbitResponseDetail(LocalDate.parse("2023-01-15"), 27.5F, 6.2F),
-                    new WeatherbitResponseDetail(LocalDate.parse("2023-01-16"), 27.6F, 6.4F)
+                    new WeatherbitResponseDetail(LocalDate.parse("2023-01-16"), 37.6F, 6.4F)
 
             )),
             City.Pissouri, new WeatherbitResponse("Pissouri", List.of(
@@ -84,7 +86,7 @@ public class WeatherApiStub implements WeatherClient {
                     new WeatherbitResponseDetail(LocalDate.parse("2023-01-13"), 13.1F, 2.5F),
                     new WeatherbitResponseDetail(LocalDate.parse("2023-01-14"), 12.3F, 1.3F),
                     new WeatherbitResponseDetail(LocalDate.parse("2023-01-15"), 12.2F, 1.0F),
-                    new WeatherbitResponseDetail(LocalDate.parse("2023-01-16"), 10.8F, 3.1F)
+                    new WeatherbitResponseDetail(LocalDate.parse("2023-01-16"), 0.8F, 3.1F)
 
             )),
             City.Le_Morne, new WeatherbitResponse("Le_Morne", List.of(
@@ -103,7 +105,7 @@ public class WeatherApiStub implements WeatherClient {
                     new WeatherbitResponseDetail(LocalDate.parse("2023-01-13"), 24.2F, 5.5F),
                     new WeatherbitResponseDetail(LocalDate.parse("2023-01-14"), 24.3F, 6.2F),
                     new WeatherbitResponseDetail(LocalDate.parse("2023-01-15"), 24.3F, 6.6F),
-                    new WeatherbitResponseDetail(LocalDate.parse("2023-01-16"), 24.4F, 5.2F)
+                    new WeatherbitResponseDetail(LocalDate.parse("2023-01-16"), 3.4F, 5.2F)
 
             ))
     );
